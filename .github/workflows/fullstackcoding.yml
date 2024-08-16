@@ -50,6 +50,7 @@ jobs:
 
     - name: Build Docker image for backend
       run: |
+        cd backend
         docker build -t rabbani676/backend-deploy:latest .
 
     - name: Push Docker image for backend to Docker Hub
