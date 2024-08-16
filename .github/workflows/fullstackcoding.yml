@@ -25,6 +25,7 @@ jobs:
 
     - name: Build Docker image for frontend
       run: |
+        cd frontend  # Navigate to the frontend directory
         docker build -t rabbani676/frontend-deploy:latest .
 
     - name: Push Docker image for frontend to Docker Hub
