@@ -27,11 +27,11 @@ jobs:
       run: |
         echo "FROM nginx:alpine" > Dockerfile
         echo "COPY frontend.html /usr/share/nginx/html/index.html" >> Dockerfile
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend-deploy:latest .
+        docker build -t rabbani676/frontend-deploy:latest .
 
     - name: Push Docker image for frontend to Docker Hub
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/frontend-deploy:latest
+        docker push rabbani676/frontend-deploy:latest
 
   build-and-deploy-backend:
     runs-on: ubuntu-latest
@@ -56,8 +56,8 @@ jobs:
         echo "COPY backend.py /app/backend.py" >> Dockerfile
         echo "RUN pip install fastapi uvicorn" >> Dockerfile
         echo 'CMD ["uvicorn", "backend:app", "--host", "0.0.0.0", "--port", "8000"]' >> Dockerfile
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/backend-deploy:latest .
+        docker build -t rabbani676/backend-deploy:latest .
 
     - name: Push Docker image for backend to Docker Hub
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/backend-deploy:latest
+        docker push rabbani676/backend-deploy:latest
